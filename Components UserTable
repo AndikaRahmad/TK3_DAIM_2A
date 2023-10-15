@@ -1,0 +1,120 @@
+<?php
+require_once '../dummyData.php';
+$userList = USER_LIST;
+$roleList = ROLE_LIST;
+
+function getRoleName($roleId, $roles)
+{
+    foreach ($roles as $role) {
+        if ($role->id == $roleId) {
+            return $role->name;
+        }
+    }
+    return "Role Not Found";
+}
+?>
+
+<div class="shadow rounded p-5 gap-5">
+    <div class="flex justify-between items-center font-semibold text-xl">
+        Users List
+    </div>
+    <div class="flex justify-between items-center mt-5 border rounded-md px-5 py-3">
+        <div class="font-semibold">
+            <div class="flex items-center gap-5">
+                <div class="flex items-center gap-5">
+                    <img src="../assets/icon-total-user.svg" alt="" />
+                    <div class="font-medium">Total Users</div>
+                </div>
+                <div class="font-bold text-2xl">05</div>
+            </div>
+        </div>
+        <button id="openModalCreateUser" class="bg-[#418575] text-sm font-medium text-white px-4 py-2 rounded-md hover:bg-opacity-80">
+            Create User
+        </button>
+    </div>
+
+    <div class="mt-5">
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">ID</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">NAME</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">ROLE</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">EMAIL</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">PASSWORD</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">PHONE</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">ADDRESS</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold flex justify-end pr-10">ACTIONS</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($userList as $user) {
+                    $userRole = getRoleName($user->role, $roleList);
+
+                    echo '<tr>';
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$user->id</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$user->name</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$userRole</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$user->email</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>******</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$user->phone</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$user->address</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm flex justify-end'>";
+                    echo "    <button class='openModalEditUser mr-2'><img src='../assets/icon-edit.svg' alt='' /></button>";
+                    if ($_GET['role_name'] == "Admin") {
+                        echo "    <button class='openModalDeleteUser'><img src='../assets/icon-delete.svg' alt='' /></button>";
+                    }
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="flex justify-between items-center mt-5">
+        <div class="text-xs py-2 px-4 border rounded-md font-semibold cursor-pointer">
+            Previous
+        </div>
+        <div class="text-xs font-semibold">
+            Page 1 of 1
+        </div>
+        <div class="text-xs py-2 px-4 border rounded-md font-semibold cursor-pointer">
+            Next
+        </div>
+    </div>
+</div>
+
+<script>
+    const openModalButtonCreateUser = document.getElementById('openModalCreateUser');
+    const modalCreateUser = document.getElementById('modalCreateUser');
+    openModalButtonCreateUser.addEventListener('click', () => {
+        modalCreateUser.style.display = 'block';
+    });
+
+    const closeButtonsUser = document.querySelectorAll('.closeModalUser');
+    closeButtonsUser.forEach(function(button) {
+        button.addEventListener('click', function() {
+            modalCreateUser.style.display = 'none';
+            modalEditUser.style.display = 'none';
+            modalDeleteUser.style.display = 'none';
+        });
+    });
+
+    const openModalButtonEditUser = document.querySelectorAll('.openModalEditUser');
+    const modalEditUser = document.getElementById('modalEditUser');
+    openModalButtonEditUser.forEach(function(button) {
+        button.addEventListener('click', function() {
+            modalEditUser.style.display = 'block';
+        });
+    });
+
+    const openModalButtonDeleteUser = document.querySelectorAll('.openModalDeleteUser');
+    const modalDeleteUser = document.getElementById('modalDeleteUser');
+    openModalButtonDeleteUser.forEach(function(button) {
+        button.addEventListener('click', function() {
+            modalDeleteUser.style.display = 'block';
+        });
+    });
+</script>
