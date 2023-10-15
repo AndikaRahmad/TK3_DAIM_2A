@@ -1,0 +1,101 @@
+<?php
+require_once '../dummyData.php';
+$roleList = ROLE_LIST;
+?>
+
+<div class="shadow rounded p-5 gap-5">
+    <div class="flex justify-between items-center font-semibold text-xl">
+        Roles List
+    </div>
+    <div class="flex justify-between items-center mt-5 border rounded-md px-5 py-3">
+        <div class="font-semibold">
+            <div class="flex items-center gap-5">
+                <div class="flex items-center gap-5">
+                    <img src="../assets/icon-total-role.svg" alt="" />
+                    <div class="font-medium">Total Roles</div>
+                </div>
+                <div class="font-bold text-2xl">05</div>
+            </div>
+        </div>
+        <button id="openModalCreateRole" class="bg-[#418575] text-sm font-medium text-white px-4 py-2 rounded-md hover:bg-opacity-80">
+            Create Role
+        </button>
+    </div>
+
+    <div class="mt-5">
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">ID</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">NAME</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold">DESCRIPTION</td>
+                    <td class="p-3 border-b border-gray-200 text-sm font-semibold flex justify-end pr-10">ACTIONS</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                require_once '../dummyData.php';
+                $roleList = ROLE_LIST;
+
+                foreach ($roleList as $role) {
+
+                    echo '<tr>';
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$role->id</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$role->name</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm'>$role->description</td>";
+                    echo "<td class='p-3 border-b border-gray-200 text-sm flex justify-end'>";
+                    echo "    <button class='openModalEditRole mr-2'><img src='../assets/icon-edit.svg' alt='' /></button>";
+                    echo "    <button class='openModalDeleteRole'><img src='../assets/icon-delete.svg' alt='' /></button>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="flex justify-between items-center mt-5">
+        <div class="text-xs py-2 px-4 border rounded-md font-semibold cursor-pointer">
+            Previous
+        </div>
+        <div class="text-xs font-semibold">
+            Page 1 of 1
+        </div>
+        <div class="text-xs py-2 px-4 border rounded-md font-semibold cursor-pointer">
+            Next
+        </div>
+    </div>
+</div>
+
+<script>
+    const openModalButtonCreateRole = document.getElementById('openModalCreateRole');
+    const modalCreateRole = document.getElementById('modalCreateRole');
+    openModalButtonCreateRole.addEventListener('click', () => {
+        modalCreateRole.style.display = 'block';
+    });
+
+    const closeButtons = document.querySelectorAll('.closeModal');
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            modalCreateRole.style.display = 'none';
+            modalEditRole.style.display = 'none';
+            modalDeleteRole.style.display = 'none';
+        });
+    });
+
+    const openModalButtonEditRole = document.querySelectorAll('.openModalEditRole');
+    const modalEditRole = document.getElementById('modalEditRole');
+    openModalButtonEditRole.forEach(function(button) {
+        button.addEventListener('click', function() {
+            modalEditRole.style.display = 'block';
+        });
+    });
+
+    const openModalButtonDeleteRole = document.querySelectorAll('.openModalDeleteRole');
+    const modalDeleteRole = document.getElementById('modalDeleteRole');
+    openModalButtonDeleteRole.forEach(function(button) {
+        button.addEventListener('click', function() {
+            modalDeleteRole.style.display = 'block';
+        });
+    });
+</script>
