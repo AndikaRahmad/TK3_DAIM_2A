@@ -1,0 +1,64 @@
+<header class="shadow py-2">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-5">
+            <div class="flex items-center gap-3">
+                <img src="../assets/icon-team.svg" alt="" />
+                <div class="text-lg font-semibold">Team 5</div>
+            </div>
+            <?php
+            $role_name = $_GET['role_name'];
+            $name = $_GET['name'];
+
+            $currentURL = $_SERVER['REQUEST_URI'];
+            $currentURL = explode('/', $currentURL);
+            $currentURL = $currentURL[2];
+            $dotPosition = strpos($currentURL, '.');
+            $currentURL = substr($currentURL, 0, $dotPosition);
+
+            if ($currentURL == "dashboard") {
+                echo "<div class='text-sm font-medium py-1 px-2 cursor-pointer border rounded-md'><a href='dashboard.php?name=$name&role_name=$role_name'>Home</a></div>";
+            } else {
+                echo "<div class='text-sm font-medium py-1 px-2 cursor-pointer'><a href='dashboard.php?name=$name&role_name=$role_name'>Home</a></div>";
+            }
+
+            if ($currentURL == "user") {
+                echo "<div class='text-sm font-medium py-1 px-2 cursor-pointer border rounded-md'><a href='user.php?name=$name&role_name=$role_name'>Users</a></div>";
+            } else {
+                echo "<div class='text-sm font-medium py-1 px-2 cursor-pointer'><a href='user.php?name=$name&role_name=$role_name'>Users</a></div>";
+            }
+
+            if ($_GET['role_name'] == "Admin") {
+                if ($currentURL == "role") {
+                    echo "<div class='text-sm font-medium py-1 px-2 cursor-pointer border rounded-md'><a href='role.php?name=$name&role_name=$role_name'>Roles</a></div>";
+                } else {
+                    echo "<div class='text-sm font-medium py-1 px-2 cursor-pointer'><a href='role.php?name=$name&role_name=$role_name'>Roles</a></div>";
+                }
+            }
+
+            if ($currentURL == "about") {
+                echo "<div class='text-sm font-medium py-1 px-2 cursor-pointer border rounded-md'><a href='about.php?name=$name&role_name=$role_name'>About</a></div>";
+            } else {
+                echo "<div class='text-sm font-medium py-1 px-2 cursor-pointer'><a href='about.php?name=$name&role_name=$role_name'>About</a></div>";
+            }
+            ?>
+            <div class="text-sm font-medium py-1 px-2 cursor-pointer">
+                <a href="login.php">Logout</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="flex flex-col items-end">
+                <div class="font-medium">
+                    <?php
+                    echo $_GET['name'];
+                    ?>
+                </div>
+                <div class="text-md">
+                    <?php
+                    echo $_GET['role_name'];
+                    ?>
+                </div>
+            </div>
+            <img src="../assets/avatar.png" alt="" class="w-10"/>
+        </div>
+    </div>
+</header>
