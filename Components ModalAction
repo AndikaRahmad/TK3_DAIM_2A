@@ -1,0 +1,55 @@
+<!-- Modal -->
+<div id="modalCreateRole" class="modal fixed h-[100vh] w-[100vw] bg-black bg-opacity-60" style="display: none;">
+    <div class="bg-white p-5 rounded" style="margin-top: 50vh; margin-left: 50vw; transform: translate(-50%, -50%);">
+        <div class="flex justify-between items-center">
+            Create Role
+            <div class="closeModal close cursor-pointer text-xl font-semibold">&times;</div>
+        </div>
+    </div>
+</div>
+
+<div id="modalEditRole" class="modal fixed h-[100vh] w-[100vw] bg-black bg-opacity-60" style="display: none;">
+    <div class="bg-white p-5 rounded" style="margin-top: 50vh; margin-left: 50vw; transform: translate(-50%, -50%);">
+        <div class="flex justify-between items-center">
+            Edit Role
+            <div class="closeModal close cursor-pointer text-xl font-semibold">&times;</div>
+        </div>
+    </div>
+</div>
+
+<div id="modalDeleteRole" class="modal fixed h-[100vh] w-[100vw] bg-black bg-opacity-60" style="display: none;">
+    <div class="bg-white p-5 rounded" style="margin-top: 50vh; margin-left: 50vw; transform: translate(-50%, -50%);">
+        <div class="flex justify-between items-center">
+            Delete Role
+            <div class="closeModal close cursor-pointer text-xl font-semibold">&times;</div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modalCreateUser" class="modal fixed h-[100vh] w-[100vw] bg-black bg-opacity-60" style="display: none;">
+    <div class="bg-white p-5 rounded" style="margin-top: 50vh; margin-left: 50vw; transform: translate(-50%, -50%);">
+        <div class="flex justify-between items-center">
+            Create User
+            <div class="closeModalUser close cursor-pointer text-xl font-semibold">&times;</div>
+        </div>
+    </div>
+</div>
+
+<div id="modalEditUser" class="modal fixed h-[100vh] w-[100vw] bg-black bg-opacity-60" style="display: none;">
+    <div class="bg-white p-5 rounded" style="margin-top: 50vh; margin-left: 50vw; transform: translate(-50%, -50%);">
+        <div class="flex justify-between items-center">
+            Edit User
+            <div class="closeModalUser close cursor-pointer text-xl font-semibold">&times;</div>
+        </div>
+    </div>
+</div>
+
+<div id="modalDeleteUser" class="modal fixed h-[100vh] w-[100vw] bg-black bg-opacity-60" style="display: none;">
+    <div class="bg-white p-5 rounded" style="margin-top: 50vh; margin-left: 50vw; transform: translate(-50%, -50%);">
+        <div class="flex justify-between items-center">
+            Delete User
+            <div class="closeModalUser close cursor-pointer text-xl font-semibold">&times;</div>
+        </div>
+    </div>
+</div>
