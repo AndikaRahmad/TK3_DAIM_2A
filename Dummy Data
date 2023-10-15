@@ -1,0 +1,22 @@
+<?php
+require_once 'models/UserModel.php';
+require_once 'models/RoleModel.php';
+
+$user1 = new UserModel(1, "David Williams", 1, "david.w@gmail.com", "123456", "0315677778", "Jl Kapuk Kamal Raya 23 C Kompl 23, Dki Jakarta");
+$user2 = new UserModel(2, "Miracle Dorwart", 2, "doward.mir@mail.com", "123456", "0214700379", "Jl Palangkaraya 69, Sumatera Utara");
+$user3 = new UserModel(3, "Emery Mango", 3, "mangooo@gmail.com", "123456", "0614145113", "Jl Husin II/15-17, Jawa Timur");
+$user4 = new UserModel(4, "Tiana Curtis", 4, "tiana.curt@yahoo.com", "123456", "0217992376", "Jl HR Rasuna Said Kav 2-3 Menara Kadin Bl X-5,");
+$user5 = new UserModel(5, "Desirae Press", 5, "desirae@gmail.com", "123456", "0226078172", "Jl Cirebon 38/64, Sumatera Utara");
+
+$userList = array($user1, $user2, $user3, $user4, $user5);
+define('USER_LIST', $userList);
+
+
+$role1 = new RoleModel(1, "Admin", "Admin role with all permissions");
+$role2 = new RoleModel(2, "User", "For user usage");
+$role3 = new RoleModel(3, "Staff", "General staff role");
+$role4 = new RoleModel(4, "Finance", "Financial department users");
+$role5 = new RoleModel(5, "Warehouse", "Warehouse department users");
+
+$roleList = array($role1, $role2, $role3, $role4, $role5);
+define('ROLE_LIST', $roleList);
